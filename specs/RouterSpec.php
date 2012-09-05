@@ -25,4 +25,9 @@ class DescribeRouter extends \PHPSpec\Context
 
     $this->spec($router->match('get', '/1/2'))->should->be('You asked for 1 but I gave you 2!');
   }
+
+  public function itLowerCasesTheMethod()
+  {
+
+  }
 }

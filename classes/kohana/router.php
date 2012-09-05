@@ -21,6 +21,7 @@ class Router
   public function match($method, $uri, $regex = [])
   {
     $uri = ltrim($uri, '/');
+    $method = strtolower($method);
 
     foreach ($this->_routes[$method] as $stored_uri => $action)
     {
