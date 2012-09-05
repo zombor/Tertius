@@ -1,8 +1,8 @@
 <?php
 
-require 'classes/kohana/router.php';
+require 'classes/tertius/router.php';
 
-$router = new \Kohana\Router;
+$router = new \Tertius\Router;
 $router->get('', function() {
-  return 'This is kohana!';
+  return 'This is teritus!';
 });

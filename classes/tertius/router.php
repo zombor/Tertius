@@ -1,6 +1,6 @@
 <?php
 
-namespace Kohana;
+namespace Tertius;
 
 class Router
 {
