@@ -4,23 +4,28 @@ namespace Tertius;
 
 class Application
 {
-  const MONGREL_REQUEST = 1;
-
   protected $_params;
+  protected $_request;
+
+  public function __construct($request)
+  {
+    $this->_request = $request;
+  }
 
   public function set_request($req, $type)
   {
     switch ($type)
     {
-      case self::MONGREL_REQUEST:
+      case Request::TYPE_MONGREL:
         $headers = $req->headers;
-        parse_str(parse_url($headers->URI, PHP_URL_QUERY), $this->_params);
+        parse_str(parse_url($headers->URI, PHP_URL_QUERY), $get);
+        $this->_request->set_get($get);
       break;
     }
   }
 
-  public function params()
+  public function request()
   {
-    return $this->_params;
+    return $this->_request;
   }
 }

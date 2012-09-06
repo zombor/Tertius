@@ -1,16 +1,18 @@
 <?php
 
-include 'classes/tertius/application.php';
+include_once 'classes/tertius/application.php';
+include_once 'classes/tertius/request.php';
 
 class DescribeApplication extends \PHPSpec\Context
 {
-  public function itAssignsAMongrelRequest()
+  public function itParsesAMongrelRequest()
   {
-    $req = Mockery::mock('mongrel request');
-    $req->headers = ((object) ['URI' => '/?foo=bar']);
-    $app = new \Tertius\Application;
-    $app->set_request($req, \Tertius\Application::MONGREL_REQUEST);
+    $request = Mockery::mock('request');
+    $request->shouldReceive('set_get')->with(['foo' => 'bar']);
 
-    $this->spec($app->params())->should->be(['foo' => 'bar']);
+    $mongrel_request = (object) ['headers' => (object) ['URI' => '/?foo=bar']];
+
+    $app = new \Tertius\Application($request);
+    $app->set_request($mongrel_request, \Tertius\Request::TYPE_MONGREL);
   }
 }
