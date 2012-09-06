@@ -1,12 +1,12 @@
 <?php
 
-include 'classes/kohana/router.php';
+include 'classes/tertius/router.php';
 
 class DescribeRouter extends \PHPSpec\Context
 {
   public function itMatchesAUri()
   {
-    $router = new \Kohana\Router;
+    $router = new \Tertius\Router;
     $router->get('', function() {
       return 'the content';
     });
@@ -16,7 +16,7 @@ class DescribeRouter extends \PHPSpec\Context
 
   public function itMatchesAUriWithParameters()
   {
-    $router = new \Kohana\Router;
+    $router = new \Tertius\Router;
     $router->get('<asked>/<got>', function() use($router) {
       $asked = $router->params('asked');
       $got = $router->params('got');

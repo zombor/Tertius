@@ -15,5 +15,7 @@ while (true)
     continue;
   }
 
+  $app->set_request($req, \Tertius\Application::MONGREL_REQUEST);
+
   $conn->reply_http($req, $router->match($req->headers->METHOD, $req->path));
 }
