@@ -16,6 +16,5 @@ while (true)
   }
 
   $app->set_request($req, \Tertius\Request::TYPE_MONGREL);
-
-  $conn->reply_http($req, $router->match($req->headers->METHOD, $req->path));
+  $app->run($conn, $req);
 }

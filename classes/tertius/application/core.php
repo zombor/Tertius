@@ -1,11 +1,12 @@
 <?php
 
-namespace Tertius;
+namespace Tertius\Application;
 
-class Application
+abstract class Core
 {
   protected $_params;
   protected $_request;
+  protected $_router;
 
   public function __construct($request)
   {
@@ -16,7 +17,7 @@ class Application
   {
     switch ($type)
     {
-      case Request::TYPE_MONGREL:
+      case \Tertius\Request::TYPE_MONGREL:
         $headers = $req->headers;
         parse_str(parse_url($headers->URI, PHP_URL_QUERY), $get);
         $this->_request->set_get($get);
@@ -27,5 +28,15 @@ class Application
   public function request()
   {
     return $this->_request;
+  }
+
+  public function router()
+  {
+    return $this->_router;
+  }
+
+  public function set_router($router)
+  {
+    $this->_router = $router;
   }
 }

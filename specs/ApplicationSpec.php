@@ -1,6 +1,6 @@
 <?php
 
-include_once 'classes/tertius/application.php';
+include_once 'classes/tertius/application/core.php';
 include_once 'classes/tertius/request.php';
 
 class DescribeApplication extends \PHPSpec\Context
@@ -12,7 +12,19 @@ class DescribeApplication extends \PHPSpec\Context
 
     $mongrel_request = (object) ['headers' => (object) ['URI' => '/?foo=bar']];
 
-    $app = new \Tertius\Application($request);
+    $app = new TestApplication($request);
     $app->set_request($mongrel_request, \Tertius\Request::TYPE_MONGREL);
   }
+
+  public function itReceivesARouter()
+  {
+    $router = Mockery::mock('router');
+    $app = new TestApplication(NULL);
+    $app->set_router($router);
+    $this->spec($app->router())->should->be($router);
+  }
+}
+
+class TestApplication extends \Tertius\Application\Core
+{
 }
