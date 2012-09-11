@@ -1,6 +1,6 @@
 # Tertius
 
-Tertius is a Mongrel2 framework for php. It's an experiment, so don't use it.
+Tertius is a Mongrel2 delivery mechanism for php. It's an experiment, so don't use it.
 
 ## How to run
 
