@@ -8,7 +8,7 @@ class DescribeMongrel extends \PHPSpec\Context
   {
     $router = Mockery::mock('router');
     $router->shouldReceive('match')->andReturn('the body');
-    $app = new \Tertius\Application\Mongrel(NULL);
+    $app = new \Tertius\Application\Mongrel(NULL, NULL);
     $app->set_router($router);
 
     $req = (object) (['headers' => ((object) ['METHOD' => 'GET']), 'path' => '/']);

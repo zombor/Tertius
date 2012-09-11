@@ -7,10 +7,12 @@ abstract class Core
   protected $_params;
   protected $_request;
   protected $_router;
+  protected $_config;
 
-  public function __construct($request)
+  public function __construct($request, $config)
   {
     $this->_request = $request;
+    $this->_config = $config;
   }
 
   public function set_request($req, $type)
@@ -28,6 +30,11 @@ abstract class Core
   public function request()
   {
     return $this->_request;
+  }
+
+  public function config()
+  {
+    return $this->_config;
   }
 
   public function router()

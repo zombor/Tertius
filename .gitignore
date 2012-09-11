@@ -2,3 +2,6 @@ composer.lock
 composer.phar
 phpspec.php
 vendor/*
+logs/*
+run/*
+config.sqlite

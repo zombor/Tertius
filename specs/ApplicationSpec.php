@@ -12,14 +12,21 @@ class DescribeApplication extends \PHPSpec\Context
 
     $mongrel_request = (object) ['headers' => (object) ['URI' => '/?foo=bar']];
 
-    $app = new TestApplication($request);
+    $app = new TestApplication($request, NULL);
     $app->set_request($mongrel_request, \Tertius\Request::TYPE_MONGREL);
+  }
+
+  public function itAcceptsAConfig()
+  {
+    $config = Mockery::mock('config');
+    $app = new TestApplication(NULL, $config);
+    $this->spec($app->config())->should->be($config);
   }
 
   public function itReceivesARouter()
   {
     $router = Mockery::mock('router');
-    $app = new TestApplication(NULL);
+    $app = new TestApplication(NULL, NULL);
     $app->set_router($router);
     $this->spec($app->router())->should->be($router);
   }
