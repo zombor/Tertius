@@ -13,4 +13,12 @@ class DescribeConfig extends \PHPSpec\Context
 
     $this->spec($config->get('system', 'base_url'))->should->be('http://example.com');
   }
+
+  public function itAcceptsOtherConfigReaders()
+  {
+    $this->pending('just an example');
+
+    $config = new \Tertius\Config;
+    $config->attach('system', new DatabaseReader);
+  }
 }
