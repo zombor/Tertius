@@ -22,7 +22,7 @@ abstract class Core
       case \Tertius\Request::TYPE_MONGREL:
         $headers = $req->headers;
         parse_str(parse_url($headers->URI, PHP_URL_QUERY), $get);
-        $this->_request->set_get($get);
+        $this->_request->set_query($get);
       break;
     }
   }
