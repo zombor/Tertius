@@ -2,6 +2,8 @@
 
 namespace Tertius;
 
+require_once 'classes/tertius/exception/http_404.php';
+
 class Router
 {
 
@@ -63,6 +65,9 @@ class Router
         return $action($matches);
       }
     }
+
+    // Nothing was found
+    throw new Exception\HTTP_404;
   }
 
   public function params($param = NULL)

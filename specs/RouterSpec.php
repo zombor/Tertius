@@ -43,7 +43,13 @@ class DescribeRouter extends \PHPSpec\Context
 
   public function itRaisesA404ExceptionIfRouteIsNotFound()
   {
+    $router = new \Tertius\Router;
 
+    $this->spec(
+      function() use($router) {
+        $router->match('get', 'dne');
+      }
+    )->should->throwException('Tertius\Exception\HTTP_404');
   }
 
   public function itHasGroupedRoutes()
