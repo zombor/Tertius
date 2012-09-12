@@ -1,4 +1,18 @@
 {
+  "name": "tertius/core",
+  "type": "library",
+  "description": "Tertius is a delivery mechanism for Mongrel2 and PHP 5.4",
+  "keywords": ["mongrel2"],
+  "homepage": "https://github.com/zombor/Tertius",
+  "license": "ISC",
+  "authors": [
+    {
+      "name": "Jeremy Bush",
+      "email": "contractfrombelow@gmail.com",
+      "homepage": "http://zombor.net",
+      "role": "Developer"
+    }
+  ],
   "config": { "bin-dir": "." },
   "minimum-stability": "dev",
   "require": {
