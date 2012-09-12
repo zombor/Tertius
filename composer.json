@@ -3,7 +3,6 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=5.4.0",
-    "phpspec/phpspec": "master",
-    "winks/m2php": "*"
+    "phpspec/phpspec": "master"
   }
 }
