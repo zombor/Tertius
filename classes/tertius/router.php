@@ -24,6 +24,18 @@ class Router
     $this->_routes['post'][$uri] = $action;
   }
 
+  public function group($prefix, $routes)
+  {
+    foreach ($routes as $route)
+    {
+      $uri = $prefix;
+      if ( ! empty($route['uri']))
+        $uri.'/'.$route['uri'];
+
+      $this->$route['method']($uri, $route['action']);
+    }
+  }
+
   public function match($method, $uri, $regex = [])
   {
     $uri = ltrim($uri, '/');

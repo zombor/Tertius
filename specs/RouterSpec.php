@@ -40,4 +40,34 @@ class DescribeRouter extends \PHPSpec\Context
   {
 
   }
+
+  public function itRaisesA404ExceptionIfRouteIsNotFound()
+  {
+
+  }
+
+  public function itHasGroupedRoutes()
+  {
+    $router = new \Tertius\Router;
+    $router->group('foobar',
+      [
+        [
+          'method' => 'post',
+          'uri' => '',
+          'action' => function() {
+            return 'this is a namespaced post route';
+          }
+        ],
+        [
+          'method' => 'get',
+          'uri' => '',
+          'action' => function() {
+            return 'this is a namespaced get route';
+          }
+        ],
+      ]
+    );
+
+    $this->spec($router->match('get', 'foobar'))->should->be('this is a namespaced get route');
+  }
 }
