@@ -8,9 +8,10 @@ class DescribeApplication extends \PHPSpec\Context
   public function itParsesAMongrelRequest()
   {
     $request = Mockery::mock('request');
-    $request->shouldReceive('set_get')->with(['foo' => 'bar']);
+    $request->shouldReceive('set_query')->with(['foo' => 'bar']);
+    $request->shouldReceive('set_post')->with(['foo' => 'baz']);
 
-    $mongrel_request = (object) ['headers' => (object) ['URI' => '/?foo=bar']];
+    $mongrel_request = (object) ['body' => 'foo=baz', 'headers' => (object) ['URI' => '/?foo=bar']];
 
     $app = new TestApplication($request, NULL);
     $app->set_request($mongrel_request, \Tertius\Request::TYPE_MONGREL);

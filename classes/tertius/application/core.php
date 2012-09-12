@@ -23,6 +23,9 @@ abstract class Core
         $headers = $req->headers;
         parse_str(parse_url($headers->URI, PHP_URL_QUERY), $get);
         $this->_request->set_query($get);
+
+        parse_str($req->body, $post);
+        $this->_request->set_post($post);
       break;
     }
   }
