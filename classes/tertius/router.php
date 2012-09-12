@@ -11,11 +11,17 @@ class Router
 
   protected $_routes = [
     'get' => [],
+    'post' => [],
   ];
 
   public function get($uri, $action)
   {
     $this->_routes['get'][$uri] = $action;
+  }
+
+  public function post($uri, $action)
+  {
+    $this->_routes['post'][$uri] = $action;
   }
 
   public function match($method, $uri, $regex = [])
