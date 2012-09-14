@@ -31,6 +31,13 @@ class DescribeApplication extends \PHPSpec\Context
     $app->set_router($router);
     $this->spec($app->router())->should->be($router);
   }
+
+  public function itHasARootPath()
+  {
+    $app = new TestApplication(NULL, NULL);
+    $app->set_root('/foo/bar');
+    $this->spec($app->root())->should->be('/foo/bar');
+  }
 }
 
 class TestApplication extends \Tertius\Application\Core

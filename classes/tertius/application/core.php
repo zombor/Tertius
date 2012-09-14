@@ -4,6 +4,8 @@ namespace Tertius\Application;
 
 abstract class Core
 {
+  protected $_root;
+
   protected $_params;
   protected $_request;
   protected $_router;
@@ -13,6 +15,16 @@ abstract class Core
   {
     $this->_request = $request;
     $this->_config = $config;
+  }
+
+  public function set_root($path)
+  {
+    $this->_root = $path;
+  }
+
+  public function root()
+  {
+    return $this->_root;
   }
 
   public function set_request($req, $type)
