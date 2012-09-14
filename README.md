@@ -1,5 +1,7 @@
 # Tertius
 
+[![Build Status](https://secure.travis-ci.org/zombor/Tertius.png)](http://travis-ci.org/zombor/Tertius)
+
 Tertius is a delivery mechanism for php 5.4. It's an experiment, so don't use it.
 
 ## Mongrel2
