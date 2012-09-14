@@ -8,16 +8,9 @@ class View
 
   protected $_template = '';
 
-  protected $_data = [];
-
   public function __construct($app = NULL)
   {
     $this->_app = $app;
-  }
-
-  public function __set($key, $val)
-  {
-    $this->_data[$key] = $val;
   }
 
   public function set_template($template)
@@ -25,7 +18,7 @@ class View
     $this->_template = $template;
   }
 
-  public function render()
+  public function render($view)
   {
     $mustache = new \Mustache_Engine;
 
@@ -34,7 +27,7 @@ class View
       $this->_template = $this->load_file();
     }
 
-    return $mustache->render($this->_template, $this->_data);
+    return $mustache->render($this->_template, $view);
   }
 
   public function load_file()
@@ -43,6 +36,6 @@ class View
     $parts = explode('\\', $class_name);
     $file = $this->_app->root().'templates/'.implode('/', $parts).'.mustache';
 
-    return readfile($file);
+    return file_get_contents($file);
   }
 }

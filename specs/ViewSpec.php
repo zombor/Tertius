@@ -8,9 +8,8 @@ class DescribeView extends \PHPSpec\Context
   {
     $view = new \Tertius\View;
     $view->set_template('The template says {{word}}');
-    $view->word = 'moo';
 
-    $this->spec($view->render())->should->be('The template says moo');
+    $this->spec($view->render(['word' => 'moo']))->should->be('The template says moo');
   }
 
   public function itReadsATemplateFromTheFilesystem()
@@ -19,8 +18,7 @@ class DescribeView extends \PHPSpec\Context
     $app = Mockery::mock('app');
     $app->shouldReceive('root')->andReturn('/foo/bar/');
     $view = new \Tertius\View($app);
-    $view->word = 'moo';
 
-    $this->spec($view->render())->should->be('The template says moo');
+    $this->spec($view->render(['word' => 'moo']))->should->be('The template says moo');
   }
 }
