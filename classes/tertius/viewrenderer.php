@@ -2,7 +2,7 @@
 
 namespace Tertius;
 
-class View
+class ViewRenderer
 {
   protected $_app = NULL;
 
